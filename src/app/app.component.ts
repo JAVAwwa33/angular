@@ -6,13 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tab = 0;
 
-  setTab(num: number): void{
-    this.tab = num;
-  }
+  borderStyle = '1px solid black';
 
-  isSelected(num: number):boolean{
-    return this.tab === num;
+  style = {
+    color: 'red',
+    fontWeight: 'bold',
+    borderBottom: this.borderStyle
   }
 }
