@@ -1,1 +1,2 @@
-<app-my-component></app-my-component>
+<button type="button" (click)="toggleExists()">Toggle component</button>
+<app-my-component *ngIf="exists"></app-my-component>
