@@ -1,5 +1,15 @@
-app-tab-component{
+.card {
   background-color: #ddd;
   padding-left: 15px;
   cursor: pointer;
+}
+
+.dark {
+  background-color: #444;
+  border-color: #000;
+  color: #fff
+}
+
+.flat {
+  box-shadow: none;
 }
