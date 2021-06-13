@@ -1,11 +1,10 @@
-<form #tdForm="ngForm" (ngSubmit)="onSubmit()">
-  <fieldset ngModelGroup="userData">
-    <label>user name: <input name="userName" ngModel></label>
-    <label>last name: <input name="lastName" ngModel></label>
-  </fieldset>
-  <fieldset ngModelGroup="otherData">
-    <label>age: <input name="age" ngModel></label>
-    <label>country: <input name="country" ngModel></label>
-  </fieldset>
+<form [formGroup]="tdForm" (ngSubmit)="onSubmit(tdForm)">
+  <div formGroupName="userData">
+    <label>user name: <input name="userName" formControlName="firstName"></label>
+    <label>last name: <input name="lastName" formControlName="lastName"></label>
+  </div>
+  <label>age: <input name="age" formControlName="age"></label>
+  <label>country: <input name="country" formControlName="country"></label>
+  <label>gender: <input name="gender" formControlName="gender"></label>
   <button type="submit">Submit</button>
 </form>
