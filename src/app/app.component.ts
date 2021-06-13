@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FilmsService} from "./services/films.service";
 
 @Component({
   selector: 'app-root',
@@ -7,26 +7,16 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild("tdForm")
+  tdForm: any;
 
-  tdForm?: any;
-
-  constructor() {
+  constructor(private service: FilmsService) {
   }
 
   ngOnInit(): void {
-    this.tdForm = new FormGroup({
-      userData: new FormGroup({
-          firstName: new FormControl(),
-          lastName: new FormControl()
-        }
-      ),
-      age: new FormControl(),
-      gender: new FormControl(),
-      country: new FormControl('Poland')
-    });
   }
 
-  onSubmit(form: any): void {
-    console.log(form.value)
+  onSubmit(): void{
+    console.log(this.tdForm.value)
   }
 }
