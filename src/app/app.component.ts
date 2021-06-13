@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FilmsService} from "./services/films.service";
 
 @Component({
@@ -7,17 +7,16 @@ import {FilmsService} from "./services/films.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  date: Date = new Date();
-
-  topMovies?: any[];
-  bottomMovies?: any[];
+  @ViewChild("tdForm")
+  tdForm: any;
 
   constructor(private service: FilmsService) {
   }
 
   ngOnInit(): void {
-    this.topMovies = this.service.getTopMovies();
-    this.bottomMovies = this.service.getBottomMovies();
+  }
+
+  onSubmit(): void{
+    console.log(this.tdForm.value)
   }
 }

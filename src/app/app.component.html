@@ -1,7 +1,11 @@
-{{123.45678 | currency: 'PLN'}} <br/>
-{{date | date: 'fullDate'}} <br/>
-<pre>{{ {name: 'John', surname: 'Doe'} | json}}</pre><br/>
-<h2>{{10.12233445 | percent}}</h2><br/>
-{{[1, 2, 3, 4, 5, 6, 7, 8, 9] | slice: 2: 4}}<br/>
-{{7 | myPipe:2}}
-
+<form #tdForm="ngForm" (ngSubmit)="onSubmit()">
+  <fieldset ngModelGroup="userData">
+    <label>user name: <input name="userName" ngModel></label>
+    <label>last name: <input name="lastName" ngModel></label>
+  </fieldset>
+  <fieldset ngModelGroup="otherData">
+    <label>age: <input name="age" ngModel></label>
+    <label>country: <input name="country" ngModel></label>
+  </fieldset>
+  <button type="submit">Submit</button>
+</form>
