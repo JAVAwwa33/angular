@@ -8,6 +8,8 @@ import {FilmsService} from "./services/films.service";
 })
 export class AppComponent implements OnInit {
 
+  date: Date = new Date();
+
   topMovies?: any[];
   bottomMovies?: any[];
 
