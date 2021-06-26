@@ -1,6 +1,8 @@
-<form [formGroup]="signupForm">
-  <input type="text" id="id" formControlName="id"/>
-  <input type="text" id="title" formControlName="title"/>
-  <input type="text" id="userId" formControlName="userId"/>
-  <button type="button" (click)="loadValues()">load</button>
-</form>
+<nav>
+  <a routerLink ="/home" >Home</a>
+  <a routerLink ="/login" >Login</a>
+  <a routerLink ="/news/post-123" >Post</a>
+  <a routerLink ="/">Main Page </a>
+  <a routerLink ="/takiej-sciezki-nie-ma" >Brak strony </a>
+</nav>
+<router-outlet></router-outlet>
