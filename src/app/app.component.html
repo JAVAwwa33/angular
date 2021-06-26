@@ -1,14 +1,4 @@
-<form [formGroup]="tdForm" (ngSubmit)="onSubmit()">
-  <div formGroupName="userData">
-    <label>user name: <input formControlName="firstName"></label>
-    <div *ngIf="submitted && f.userData.controls.firstName.errors">
-      <div style="color: red">First name is required</div>
-    </div>
-    <label>last name: <input name="lastName" formControlName="lastName"></label>
-  </div>
-  <label>age: <input name="age" formControlName="age"></label>
-  <label>country: <input name="country" formControlName="country"></label>
-  <label>gender: <input name="gender" formControlName="gender"></label>
-  <button type="submit">Submit</button>
-</form>
-
+<div *ngIf="post">
+  {{post.userId}} {{post.title}}
+  <div>{{post.body}}</div>
+</div>
