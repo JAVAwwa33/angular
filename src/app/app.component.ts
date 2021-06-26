@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://jsonplaceholder.typicode.com/posts/1').subscribe(value => {
-      this.post = value;
-    })
+    const httpHeader = {
+      headers: new HttpHeaders({'Content-type': 'application/json; charset=UTF-8'})
+    };
+    const body = {
+      userId: 1,
+      title: 'Mój tytul',
+      body: 'moja tresc'
+    };
+    this.http.post('http://jsonplaceholder.typicode.com/posts', body, httpHeader)
+      .subscribe(value => {
+        this.post = value;
+      });
   }
 }
