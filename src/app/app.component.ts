@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {FormBuilder} from "@angular/forms";
+import {Post} from "./models/Post";
 
 @Component({
   selector: 'app-root',
@@ -8,23 +10,30 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
 
-  post: any;
+  signupForm: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, formBuilder: FormBuilder) {
+    this.signupForm = formBuilder.group({
+      id: [''],
+      title: [''],
+      userId: ['']
+    });
   }
 
   ngOnInit(): void {
-    const httpHeader = {
-      headers: new HttpHeaders({'Content-type': 'application/json; charset=UTF-8'})
-    };
-    const body = {
-      userId: 1,
-      title: 'Mój tytul',
-      body: 'moja tresc'
-    };
-    this.http.post('http://jsonplaceholder.typicode.com/posts', body, httpHeader)
-      .subscribe(value => {
-        this.post = value;
-      });
+    this.loadValues();
+  }
+
+
+  loadValues() : void {
+    this.http.get('https://jsonplaceholder.typicode.com/posts/1'
+    )
+      .subscribe(
+        (data) => {
+          const post = data as Post;
+          this.signupForm.controls.id.patchValue(post.id);
+          this.signupForm.controls.title.patchValue(post.title);
+          this.signupForm.controls.userId.patchValue(post.userId);
+        });
   }
 }

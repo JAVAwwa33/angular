@@ -1,5 +1,6 @@
-<div *ngIf="post">
-  {{post.userId}} {{post.title}}
-  <div>{{post.body}}</div>
-  <div>{{post.id}}</div>
-</div>
+<form [formGroup]="signupForm">
+  <input type="text" id="id" formControlName="id"/>
+  <input type="text" id="title" formControlName="title"/>
+  <input type="text" id="userId" formControlName="userId"/>
+  <button type="button" (click)="loadValues()">load</button>
+</form>
