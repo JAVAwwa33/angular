@@ -17,6 +17,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {APIResolver} from "./resolvers/apiresolver.resolver";
 import {AuthGuard} from "./routerGuards/AuthGuard";
 import {AuthService} from "./services/auth.service";
+import { ExampleComponentComponent } from './components/example-component/example-component.component';
 
 const appRoutes : Routes = [
   { path : 'login',
@@ -46,7 +47,8 @@ const appRoutes : Routes = [
     HomeComponent,
     LoginComponent,
     NewsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ExampleComponentComponent
   ],
   imports: [
     BrowserModule,
