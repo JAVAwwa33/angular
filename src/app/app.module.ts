@@ -9,12 +9,14 @@ import {MyDirectiveDirective} from "./directives/my-directive.directive";
 import {MyPipePipe} from './pipes/my-pipe.pipe';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { NewsComponent } from './components/news/news.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import {HomeComponent} from './components/home/home.component';
+import {LoginComponent} from './components/login/login.component';
+import {NewsComponent} from './components/news/news.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 import {RouterModule, Routes} from "@angular/router";
 import {APIResolver} from "./resolvers/apiresolver.resolver";
+import {AuthGuard} from "./routerGuards/AuthGuard";
+import {AuthService} from "./services/auth.service";
 
 const appRoutes : Routes = [
   { path : 'login',
@@ -24,7 +26,8 @@ const appRoutes : Routes = [
     component : HomeComponent ,
     data : {page : 'Home page' }},
   { path : 'news/:newsId' ,
-    component : NewsComponent },
+    component: NewsComponent,
+    canActivate: [AuthGuard] },
   { path : '',
     redirectTo : '/home',
     pathMatch : 'full'},
@@ -52,7 +55,9 @@ const appRoutes : Routes = [
     BrowserModule ,
     RouterModule. forRoot(appRoutes)
   ],
-  providers: [APIResolver],
+  providers: [APIResolver,
+    AuthGuard,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
