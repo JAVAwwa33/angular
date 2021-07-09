@@ -14,10 +14,12 @@ import { LoginComponent } from './components/login/login.component';
 import { NewsComponent } from './components/news/news.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import {RouterModule, Routes} from "@angular/router";
+import {APIResolver} from "./resolvers/apiresolver.resolver";
 
 const appRoutes : Routes = [
   { path : 'login',
-    component : LoginComponent} ,
+    component: LoginComponent,
+    resolve: {message: APIResolver}} ,
   { path : 'home',
     component : HomeComponent ,
     data : {page : 'Home page' }},
@@ -50,7 +52,7 @@ const appRoutes : Routes = [
     BrowserModule ,
     RouterModule. forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [APIResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {
